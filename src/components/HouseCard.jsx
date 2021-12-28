@@ -12,18 +12,25 @@ export default function HouseCard({ house }) {
     lotAreaValue,
     propertyType,
     zpid,
+    latitude,
+    longitude
+
   } = house;
 
+  //address variables for display
   const addressAr = address.split(",");
   const street = addressAr.shift().toString();
   const city = addressAr.join(", ");
   const community = addressAr[0];
 
+
+  //URL links
   const zillowURL = `https://www.zillow.com/homedetails/${zpid}_zpid/`;
+  const googleMapURL = `http://maps.google.com/maps?q=${latitude},${longitude}`;
 
   return (
     <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
+      <a href={googleMapURL}>
         <img className="rounded-t-lg" src={imgSrc} alt="" />
       </a>
       <div className="p-5">
