@@ -10,7 +10,29 @@ function App() {
   const [searchQuery, setSearchQuery] = useState();
 
   useEffect(() => {
-    /*
+    //sub to fetch data from API
+    //fetch from sample data for now (development)
+    setHouses(sampleData);
+  }, [searchQuery]);
+
+  return (
+    <>
+      <div
+        className={`flex${
+          searchQuery ? "initial" : ""
+        } overflow-auto flex-wrap items-center justify-center  h-screen w-screen p-8 bg-gray-800`}>
+        <div>
+          <SearchBar setSearchQuery={setSearchQuery} />
+        </div>
+        {searchQuery && <HouseCardGrid houses={houses} />}
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+/*
     *********** Data Schema **********
     {
       sampleData{
@@ -36,27 +58,3 @@ function App() {
     }
     
     */
-    //sub to fetch data from API
-    //fetch from sample data for now (development)
-    setHouses(sampleData);
-    // console.log(houses);
-  }, [searchQuery]);
-
-  // useEffect(()=>{
-  //   console.log(houses)
-
-  // },[houses])
-
-  return (
-    <>
-      <div className={`flex${searchQuery ? "initial":""} overflow-auto flex-wrap items-center justify-center  h-screen w-screen p-8 bg-gray-800`}>
-        <div>
-          <SearchBar setSearchQuery={setSearchQuery} />
-        </div>
-        {searchQuery && <HouseCardGrid houses={houses} />}
-      </div>
-    </>
-  );
-}
-
-export default App;
