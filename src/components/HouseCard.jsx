@@ -1,28 +1,50 @@
 import React from "react";
 
-export default function HouseCard() {
+export default function HouseCard({ house }) {
+  const {
+    address,
+    imgSrc,
+    bedrooms,
+    bathrooms,
+    price,
+    livingArea,
+    lotAreaUnit,
+    lotAreaValue,
+    propertyType,
+    zpid,
+  } = house;
+
+  const addressAr = address.split(",");
+  const street = addressAr.shift().toString();
+  const city = addressAr.join(", ");
+  const community = addressAr[0];
+
+  const zillowURL = `https://www.zillow.com/homedetails/${zpid}_zpid/`;
+
   return (
     <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
-        <img
-          className="rounded-t-lg"
-          src="https://flowbite.com/docs/images/blog/image-1.jpg"
-          alt=""
-        />
+        <img className="rounded-t-lg" src={imgSrc} alt="" />
       </a>
       <div className="p-5">
         <a href="#">
-          <h5 className="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">
-            Noteworthy technology acquisitions 2021
-          </h5>
+          <h3 className="text-gray-900 font-bold text-xl tracking-tighter  dark:text-white">
+            {street}
+          </h3>
+          <h6 className="text-gray-900 font-semibold  tracking-tight mb-2 dark:text-white">
+            {city}
+          </h6>
         </a>
         <p className="font-normal text-gray-700 mb-3 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          Beautiful {propertyType.replace("_", " ").toLowerCase()} home with
+          over {livingArea.toLocaleString("en-US")} finished {lotAreaUnit}{" "}
+          situated on a beautiful lot in sought-after {community} community.
+          Home features {bedrooms} bedrooms, and {bathrooms} bathroom
+          {bathrooms > 1 ? "s" : ""}
         </p>
         <a
-          href="#"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          href={zillowURL}
+          className="text-white bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
           Read more
           <svg
             className="-mr-1 ml-2 h-4 w-4"
