@@ -30,7 +30,7 @@ export default function HouseCard({ house }) {
 
   return (
     <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-      <a href={googleMapURL}>
+      <a href={googleMapURL} target="_blank">
         <img className="rounded-t-lg" src={imgSrc} alt="" />
       </a>
       <div className="p-5">
@@ -51,6 +51,7 @@ export default function HouseCard({ house }) {
         </p>
         <a
           href={zillowURL}
+          target="_blank"
           className="text-white bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center">
           Read more
           <svg
