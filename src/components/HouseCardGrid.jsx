@@ -2,6 +2,9 @@ import React from "react";
 import HouseCard from "./HouseCard";
 
 export default function HouseCardGrid({ houses }) {
+  if (!("props" in houses) || !houses) {
+    return <></>;
+  }
   const { props } = houses;
   return (
     <div className="px-2">
