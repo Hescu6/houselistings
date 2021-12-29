@@ -40,9 +40,16 @@ export default function HouseCard({ house }) {
           <h3 className="text-gray-900 font-bold text-xl tracking-tighter  dark:text-white">
             {street}
           </h3>
-          <h6 className="text-gray-900 font-semibold  tracking-tight mb-2 dark:text-white">
+          <h6 className="text-gray-900 font-semibold  tracking-tighter mb-2 dark:text-white">
             {city}
           </h6>
+          <h3 className="text-gray-900 font-bold text-1 tracking-tight mb-2 dark:text-blue-200">
+            $
+            {price.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </h3>
         </a>
         <p className="font-normal text-gray-700 mb-3 dark:text-gray-400">
           Beautiful {propertyType.replace("_", " ").toLowerCase()} home with
